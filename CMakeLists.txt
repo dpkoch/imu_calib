@@ -151,6 +151,13 @@ target_link_libraries(do_calib
   ${catkin_LIBRARIES}
 )
 
+add_executable(apply_calib src/apply_calib_node.cpp src/apply_calib.cpp)
+add_dependencies(apply_calib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(apply_calib
+  accel_calib
+  ${catkin_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############

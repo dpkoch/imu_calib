@@ -7,7 +7,17 @@
 
 #include <ros/ros.h>
 
+#include "accel_calib/do_calib.h"
+
 int main(int argc, char** argv)
 {
+  ros::init(argc, argv, "do_calib");
+
+  accel_calib::DoCalib calib;
+  while (calib.running())
+  {
+    ros::spinOnce();
+  }
+
   return 0;
 }

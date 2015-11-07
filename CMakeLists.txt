@@ -144,7 +144,7 @@ target_link_libraries(accel_calib
 #   ${catkin_LIBRARIES}
 # )
 
-add_executable(do_calib src/do_calib_node.cpp)
+add_executable(do_calib src/do_calib_node.cpp src/do_calib.cpp)
 add_dependencies(do_calib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(do_calib
   accel_calib

@@ -76,10 +76,17 @@ bool AccelCalib::saveCalib(std::string calib_file)
     node["bias"].push_back(bias_(i));
   }
 
-  std::ofstream fout;
-  fout.open(calib_file.c_str());
-  fout << node;
-  fout.close();
+  try
+  {
+    std::ofstream fout;
+    fout.open(calib_file.c_str());
+    fout << node;
+    fout.close();
+  }
+  catch (...)
+  {
+    return false;
+  }
 
   return true;
 }

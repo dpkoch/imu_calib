@@ -14,7 +14,7 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "do_calib");
 
   accel_calib::DoCalib calib;
-  while (calib.running())
+  while (ros::ok() && calib.running())
   {
     ros::spinOnce();
   }

@@ -99,9 +99,10 @@ void AccelCalib::beginCalib(int measurements, double reference_acceleration)
   measurements_received_ = 0;
 
   meas_.resize(3*measurements, 12);
-  meas_.reserve(4*3*measurements);
+  meas_.setZero();
 
-  ref_.resize(3*measurements, 1);
+  ref_.resize(3*measurements);
+  ref_.setZero();
 
   memset(orientation_count_, 0, sizeof(orientation_count_));
   calib_initialized_ = true;
@@ -113,11 +114,11 @@ bool AccelCalib::addMeasurement(AccelCalib::Orientation orientation, double ax, 
   {
     for (int i = 0; i < 3; i++)
     {
-      meas_.insert(3*measurements_received_ + i, 3*i) = ax;
-      meas_.insert(3*measurements_received_ + i, 3*i + 1) = ay;
-      meas_.insert(3*measurements_received_ + i, 3*i + 2) = az;
+      meas_(3*measurements_received_ + i, 3*i) = ax;
+      meas_(3*measurements_received_ + i, 3*i + 1) = ay;
+      meas_(3*measurements_received_ + i, 3*i + 2) = az;
 
-      meas_.insert(3*measurements_received_ + i, 9 + i) = -1.0;
+      meas_(3*measurements_received_ + i, 9 + i) = -1.0;
     }
 
     ref_(3*measurements_received_ + reference_index_[orientation], 0) = reference_sign_[orientation] *  reference_acceleration_;
@@ -146,17 +147,7 @@ bool AccelCalib::computeCalib()
   }
 
   // solve least squares
-  Eigen::SparseQR< Eigen::SparseMatrix<double>, Eigen::COLAMDOrdering<int> > solver;
-  meas_.makeCompressed();
-  solver.compute(meas_);
-
-  if (solver.info() != Eigen::Success)
-    return false;
-
-  Eigen::VectorXd xhat = solver.solve(ref_);
-
-  if (solver.info() != Eigen::Success)
-    return false;
+  Eigen::VectorXd xhat = meas_.jacobiSvd(Eigen::ComputeThinU | Eigen::ComputeThinV).solve(ref_);
 
   // extract solution
   for (int i = 0; i < 9; i++)

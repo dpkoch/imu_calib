@@ -5,9 +5,7 @@
  * Class for calculating and applying accelerometer calibration parameters
  */
 
-#include <Eigen/Core>
 #include <Eigen/Dense>
-#include <Eigen/Sparse>
 
 #include <string>
 
@@ -51,8 +49,8 @@ protected:
   bool calib_initialized_;
   int orientation_count_[6];
 
-  Eigen::SparseMatrix<double> meas_; //!< least squares measurements matrix
-  Eigen::MatrixXd ref_; //!< least squares expected measurements vector
+  Eigen::MatrixXd meas_; //!< least squares measurements matrix
+  Eigen::VectorXd ref_; //!< least squares expected measurements vector
   int num_measurements_; //!< number of measurements expected for this calibration
   int measurements_received_; //!< number of measurements received for this calibration
 };

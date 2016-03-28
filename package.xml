@@ -4,20 +4,16 @@
   <version>0.0.0</version>
   <description>Package for performing and applying accelerometer calibrations</description>
 
+  <author email="danielpkoch@gmail.com">Daniel Koch</author>
   <maintainer email="danielpkoch@gmail.com">Daniel Koch</maintainer>
 
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>TODO</license>
+  <license>BSD</license>
 
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
   <url type="website">http://wiki.ros.org/accel_calib</url>
   <url type="repository">https://github.com/dpkoch/accel_calib.git</url>
-
-  <author email="danielpkoch@gmail.com">Daniel Koch</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 

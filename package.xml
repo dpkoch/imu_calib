@@ -2,18 +2,16 @@
 <package>
   <name>imu_calib</name>
   <version>0.0.0</version>
-  <description>Package for performing and applying accelerometer calibrations</description>
+  <description>Package for computing and applying IMU calibrations</description>
 
-  <author email="danielpkoch@gmail.com">Daniel Koch</author>
-  <maintainer email="danielpkoch@gmail.com">Daniel Koch</maintainer>
+  <author email="daniel.p.koch@gmail.com">Daniel Koch</author>
+  <maintainer email="daniel.p.koch@gmail.com">Daniel Koch</maintainer>
 
   <license>BSD</license>
 
-  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
-  <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <!-- Example: -->
   <url type="website">http://wiki.ros.org/imu_calib</url>
   <url type="repository">https://github.com/dpkoch/imu_calib.git</url>
+  <url type="bugtracker">https://github.com/dpkoch/imu_calib/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
@@ -28,11 +26,4 @@
   <run_depend>roscpp</run_depend>
   <run_depend>sensor_msgs</run_depend>
   <run_depend>yaml-cpp</run_depend>
-
-
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- Other tools can request additional information be placed here -->
-
-  </export>
 </package>

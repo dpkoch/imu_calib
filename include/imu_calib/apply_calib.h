@@ -59,6 +59,14 @@ private:
   ros::Publisher corrected_pub_;
 
   void rawImuCallback(sensor_msgs::Imu::ConstPtr raw);
+
+  bool calibrate_gyros_;
+  int gyro_calib_samples_;
+  int gyro_sample_count_;
+
+  double gyro_bias_x_;
+  double gyro_bias_y_;
+  double gyro_bias_z_;
 };
 
 } // namespace accel_calib

@@ -209,4 +209,15 @@ void AccelCalib::applyCalib(double raw[3], double corrected[3])
   corrected[2] = corrected_accel(2);
 }
 
+void AccelCalib::applyCalib(double raw_x, double raw_y, double raw_z, double *corr_x, double *corr_y, double *corr_z)
+{
+  Eigen::Vector3d raw_accel(raw_x, raw_y, raw_z);
+
+  Eigen::Vector3d corrected_accel = SM_*raw_accel - bias_;
+
+  *corr_x = corrected_accel(0);
+  *corr_y = corrected_accel(1);
+  *corr_z = corrected_accel(2);
+}
+
 } // namespace accel_calib

@@ -93,17 +93,11 @@ void ApplyCalib::rawImuCallback(sensor_msgs::Imu::ConstPtr raw)
     return;
   }
 
-  double acc_raw[3] = { raw->linear_acceleration.x,
-                        raw->linear_acceleration.y,
-                        raw->linear_acceleration.z };
-  double acc_corrected[3];
-
-  calib_.applyCalib(acc_raw, acc_corrected);
-
   sensor_msgs::Imu corrected = *raw;
-  corrected.linear_acceleration.x = acc_corrected[0];
-  corrected.linear_acceleration.y = acc_corrected[1];
-  corrected.linear_acceleration.z = acc_corrected[2];
+
+  calib_.applyCalib(raw->linear_acceleration.x, raw->linear_acceleration.y, raw->linear_acceleration.z,
+                    &corrected.linear_acceleration.x, &corrected.linear_acceleration.y, &corrected.linear_acceleration.z);
+
   corrected.angular_velocity.x -= gyro_bias_x_;
   corrected.angular_velocity.y -= gyro_bias_y_;
   corrected.angular_velocity.z -= gyro_bias_z_;

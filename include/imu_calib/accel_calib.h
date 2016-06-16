@@ -69,6 +69,7 @@ public:
 
   // calibration application
   void applyCalib(double raw[3], double corrected[3]);
+  void applyCalib(double raw_x, double raw_y, double raw_z, double *corr_x, double *corr_y, double *corr_z);
 
 protected:
   static const int reference_index_[6];

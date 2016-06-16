@@ -33,51 +33,32 @@
 *********************************************************************/
 
 /**
- * \file do_calib.h
+ * \file apply_calib.h
  * \author Daniel Koch <daniel.p.koch@gmail.com>
  *
- * Class for performing IMU calibration
+ * Class for applying a previously computed calibration to IMU data
  */
 
 #include <ros/ros.h>
 #include <sensor_msgs/Imu.h>
 
-#include <string>
-#include <vector>
-#include <queue>
+#include <imu_calib/accel_calib.h>
 
-#include <accel_calib/accel_calib.h>
-
-namespace accel_calib
+namespace imu_calib
 {
 
-class DoCalib
+class ApplyCalib
 {
 public:
-  DoCalib();
-
-  bool running();
+  ApplyCalib();
 
 private:
-  enum DoCalibState { START, SWITCHING, RECEIVING, COMPUTING, DONE };
-
   AccelCalib calib_;
 
-  DoCalibState state_;
+  ros::Subscriber raw_sub_;
+  ros::Publisher corrected_pub_;
 
-  int measurements_per_orientation_;
-  int measurements_received_;
-
-  double reference_acceleration_;
-  std::string output_file_;
-
-  std::queue<AccelCalib::Orientation> orientations_;
-  AccelCalib::Orientation current_orientation_;
-
-  std::string orientation_labels_[6];
-
-  ros::Subscriber imu_sub_;
-  void imuCallback(sensor_msgs::Imu::ConstPtr imu);
+  void rawImuCallback(sensor_msgs::Imu::ConstPtr raw);
 };
 
 } // namespace accel_calib

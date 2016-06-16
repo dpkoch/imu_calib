@@ -39,9 +39,9 @@
  * Class for applying a previously computed calibration to IMU data
  */
 
-#include "accel_calib/apply_calib.h"
+#include "imu_calib/apply_calib.h"
 
-namespace accel_calib
+namespace imu_calib
 {
 
 ApplyCalib::ApplyCalib()

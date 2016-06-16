@@ -39,13 +39,13 @@
  * Class for calculating and applying accelerometer calibration parameters
  */
 
-#include "accel_calib/accel_calib.h"
+#include "imu_calib/accel_calib.h"
 
 #include <yaml-cpp/yaml.h>
 
 #include <fstream>
 
-namespace accel_calib
+namespace imu_calib
 {
 
 const int AccelCalib::reference_index_[] = { 0, 0, 1, 1, 2, 2 };

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(accel_calib)
+project(imu_calib)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -101,7 +101,7 @@ pkg_check_modules(YAML yaml-cpp)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES accel_calib
+#  LIBRARIES imu_calib
   CATKIN_DEPENDS cmake_modules roscpp sensor_msgs
   DEPENDS Eigen yaml-cpp
 )
@@ -121,7 +121,7 @@ include_directories(
 
 # Declare a C++ library
 add_library(accel_calib
-  src/${PROJECT_NAME}/accel_calib.cpp
+  src/accel_calib/accel_calib.cpp
 )
 target_link_libraries(accel_calib
   ${YAML_LIBRARIES}

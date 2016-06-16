@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>accel_calib</name>
+  <name>imu_calib</name>
   <version>0.0.0</version>
   <description>Package for performing and applying accelerometer calibrations</description>
 
@@ -12,8 +12,8 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <url type="website">http://wiki.ros.org/accel_calib</url>
-  <url type="repository">https://github.com/dpkoch/accel_calib.git</url>
+  <url type="website">http://wiki.ros.org/imu_calib</url>
+  <url type="repository">https://github.com/dpkoch/imu_calib.git</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 

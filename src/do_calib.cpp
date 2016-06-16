@@ -39,9 +39,9 @@
  * Class for performing IMU calibration
  */
 
-#include "accel_calib/do_calib.h"
+#include "imu_calib/do_calib.h"
 
-namespace accel_calib
+namespace imu_calib
 {
 
 DoCalib::DoCalib() :

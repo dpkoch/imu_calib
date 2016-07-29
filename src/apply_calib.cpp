@@ -65,6 +65,8 @@ ApplyCalib::ApplyCalib() :
   nh_private.param<bool>("calibrate_gyros", calibrate_gyros_, true);
   nh_private.param<int>("gyro_calib_samples", gyro_calib_samples_, 100);
 
+  nh_private.param<bool>("nwu_to_ned", nwu_to_ned_, false);
+
   int queue_size;
   nh_private.param<int>("queue_size", queue_size, 5);
 
@@ -101,6 +103,20 @@ void ApplyCalib::rawImuCallback(sensor_msgs::Imu::ConstPtr raw)
   corrected.angular_velocity.x -= gyro_bias_x_;
   corrected.angular_velocity.y -= gyro_bias_y_;
   corrected.angular_velocity.z -= gyro_bias_z_;
+
+  // TEMPORARY!!!
+  corrected.linear_acceleration.x *= -1;
+  corrected.linear_acceleration.y *= -1;
+  corrected.angular_velocity.x *= -1;
+  corrected.angular_velocity.y *= -1;
+
+  if (nwu_to_ned_)
+  {
+    corrected.linear_acceleration.y *= -1;
+    corrected.linear_acceleration.z *= -1;
+    corrected.angular_velocity.y *= -1;
+    corrected.angular_velocity.z *= -1;
+  }
 
   corrected_pub_.publish(corrected);
 }

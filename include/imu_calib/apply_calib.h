@@ -67,6 +67,8 @@ private:
   double gyro_bias_x_;
   double gyro_bias_y_;
   double gyro_bias_z_;
+
+  bool nwu_to_ned_;
 };
 
 } // namespace accel_calib
